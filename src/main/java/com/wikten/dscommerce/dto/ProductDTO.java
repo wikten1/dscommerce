@@ -1,12 +1,21 @@
 package com.wikten.dscommerce.dto;
 
 import com.wikten.dscommerce.entities.Product;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 public class ProductDTO {
 
     private Long id;
+    @Size(min = 3, max = 80, message = "O nome deve ter entre 3 e 80 caracteres")
+    @NotBlank(message = "Campo requerido")
     private String name;
+    @Size(min = 10, message = "A descrição deve ter no mínimo 10 caracteres")
+    @NotBlank(message = "Campo requerido")
     private String description;
+    @Positive(message = "O preço deve ser um valor positivo")
     private Double price;
     private String imgUrl;
 
